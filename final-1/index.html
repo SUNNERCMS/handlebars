@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Handlebars</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>我的笔记本</h1>
+            <h3>佛曰： 我执，是痛苦的根源！</h3>
+        </div>
+
+        <!-- 课程 -->
+        <div id="content">
+        </div>
+        <div class="tcdPageCode">
+        </div>
+    </div>
+
+    <!-- 锁屏 -->
+    <div id="lock"></div>
+
+    <!-- 模态框 -->
+    <div class="modal">
+        <div id="chapter">
+            
+        </div>
+        <div id="note-middle"></div>
+        <div id="note"></div>
+    </div>
+
+    <script id="class-template" type="text/x-handlebars-template">
+        <ul class="clearfix">
+            {{#each this}}
+            <li id="{{id}}" title="{{title}}">
+                <img src="{{image}}" alt="{{title}}">
+                <div class="clearfix">
+                    <h3 class="title" title="{{title}}">{{title}}</h3>            
+                    {{#hasnote hasnote 1}}
+                    <span class="hasnote">(有笔记)</span>
+                    {{/hasnote}}
+                </div>
+                <small class="subtitle">{{subtitle}}</small>
+                <div class="timespan {{#islong timespan}} long {{else}} short {{/islong}}">时间：{{timespan}}</div>     
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script id="chapter-template" type="text/x-handlebars-template">
+        <ul>
+            <h2>{{title}}</h2>
+            {{#each data}}
+            <li>
+                <h3 class="chapter-title" title="{{title}}">{{title}}</h3>
+                <ul class="chapter-subtitle">
+                    {{#each subTitle}}
+                    <li>
+                        <h4 class="chapter-subtitle-item" title="{{title}}">{{title}}</h4>
+                        
+                        <span class="chapter-timespan">
+                            ( {{#isvideo titletype}}{{timespan}} {{else}} 练习 {{/isvideo}} )
+                        </span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+    <script src="https://cdn.bootcss.com/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./js/page.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

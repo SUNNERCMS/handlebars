@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="handlebars使用教学 handlebars案例演示">
+    <title>Handlebars教程</title>
+    <style>
+        .card {
+            font-size: 30px;
+            background-color: #abbccc;
+            margin: 20px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="card"></div>
+    <!-- 模板部分 -->
+    <script id="tpl" type="text/x-handlebars-template">
+        {{!-- Handlebars的注释写法 --}}
+        {{!-- 注意：Handlerbars比较难以理解的地方是：在数据渲染时会自动进入数据的下一层 --}}
+        {{!-- 这里的this代表data数组 --}}
+        {{#each this}}
+        <div class="card">
+                <div>姓名： {{name}}</div>
+                <div>出生： {{birth}}</div>
+                <div>籍贯： {{home}}</div>
+                <div>工作： {{job}}</div>
+                <ul>
+                    {{#each books}}
+                    {{!-- 这里的this代表books数组中的值 --}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+        </div>
+        {{/each}}
+    </script>
+    <!-- 引入handlebars -->
+    <script src="https://cdn.bootcss.com/handlebars.js/2.0.0/handlebars.min.js"></script>
+
+    <!-- js部分 -->
+    <script>
+        // 数据
+        var data = [
+            {
+                name: '凯文米特尼克',
+                birth: '1963年8月6日',
+                home: '美国洛杉矶',
+                job: '网络安全咨询师',
+                books: [
+                    '《欺骗的艺术》',
+                    '《入侵的艺术》',
+                    '《线上幽灵》'
+                ]
+            },
+            {
+                name: '沃兹尼亚克',
+                birth: '1950年8月11日',
+                home: '美国加利福利亚',
+                job: '电脑工程师',
+                books: [
+                    '《与苹果一起疯狂》'
+                ]
+            }
+        ]
+
+        // 获取模板
+        var tpl = document.getElementById('tpl').innerHTML
+        // Handlebars编译模板，返回一个可执行函数
+        var template = Handlebars.compile(tpl)
+        // 传入数据，得到编译后的html
+        var html = template(data)
+        // 将编译完成的html显示到网页
+        document.getElementById('card').innerHTML = html
+    </script>
+</body>
+
+</html>

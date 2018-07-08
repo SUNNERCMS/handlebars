@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Handlebars</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>我的笔记本</h1>
+            <h3>佛曰： 我执，是痛苦的根源！</h3>
+        </div>
+
+        <div id="content">
+        </div>
+        <div class="tcdPageCode">
+        </div>
+    </div>
+
+    <script id="class-template" type="text/x-handlebars-template">
+        <ul class="clearfix">
+            {{#each this}}
+            <li>
+                <img src="{{image}}" alt="{{title}}">
+                <div class="clearfix">
+                    <h3 class="title" title="{{title}}">{{title}}</h3>            
+                    {{#hasnote hasnote 1}}
+                    <span class="hasnote">(有笔记)</span>
+                    {{/hasnote}}
+                </div>
+                <small class="subtitle">{{subtitle}}</small>
+                <div class="timespan {{#islong timespan}} long {{else}} short {{/islong}}">时间：{{timespan}}</div>     
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+    <script src="https://cdn.bootcss.com/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./js/page.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
