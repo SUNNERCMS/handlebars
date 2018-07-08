@@ -1,7 +1,6 @@
 # 模板引擎Handlebars实现我的笔记本
 
 [点击查看实现后的效果](http://zhanghuanbiao.gitee.io/learnfree/handlebars/final-2/)  
-[点击进入码云查看](https://gitee.com/zhanghuanbiao/LearnFree/tree/master/handlebars)  
 [最终源码](https://gitee.com/zhanghuanbiao/LearnFree/tree/master/handlebars/final-2)
 
 * 第一部分 Handlebars 的使用演示
